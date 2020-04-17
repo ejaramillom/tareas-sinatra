@@ -7,7 +7,7 @@ get '/' do
 end
 
 post '/' do
-	@crear_tarea = Tarea.create(params[:crear_tarea])
+	@nueva_tarea = Tarea.create(params[:nueva_tarea])
 	redirect '/'
 end
 
