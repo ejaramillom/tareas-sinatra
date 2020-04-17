@@ -1,0 +1,53 @@
+<head>
+	<title>Tareas</title>
+
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+
+			<form action="/" method="post">
+				<input type="text" name="crear_tarea">
+				<input type="submit" value="Crear tarea!">
+			</form>
+
+			<table class="table">
+				<thead>
+					<tr>
+					  <th>ID</th>
+					  <th>Nombre</th>
+					  <th>Realizado</th>
+					  <th>Fecha de creación</th>
+					  <th>Fecha de actualización</th>
+					  <th>Acción</th>
+					<tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<% @tareas.each do |tarea| %>
+						<% if tarea["done"].eql? (false) %>
+							<% tarea.each do |key, value| %>
+								<td> <%= "#{value}" %> </td>
+							<% end %>
+							  <td><a class="btn btn-primary" href="/update/<%=tarea["id"]%>" role="button">Actualizar</a></td>
+						<% else %>
+							<% tarea.each do |key, value| %>
+								<td> <%= "#{value}" %> </td>
+							<% end %>
+							  <td><a class="btn btn-primary" href="/delete/<%=tarea["id"]%>" role="button">Borrar</a></td>
+						<% end %>
+				  </tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
